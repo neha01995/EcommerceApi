@@ -13,11 +13,12 @@ app.use(bodyParser.urlencoded({extended: true}));
 // parse request of content-type
 app.use(bodyParser.json());
 
+app.use('/', require("./routes"));
 
 // Defining a simple route
-app.get('/', (req, res) => {
-    res.json({"message": "welcome guys" });
-});
+// app.get('/', (req, res) => {
+//     res.json({"message": "welcome guys" });
+// });
 
 
 // Listen for requests
