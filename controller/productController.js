@@ -35,9 +35,11 @@ module.exports.fetchProduct = function(req, res){
 
 // For updating the product
 module.exports.productUpdate = function(req, res){
-    const num = parseInt(req.query.num);
+
+    
+    const number = parseInt(req.query.number);
     console.log("params", req.params.id);
-    ProductSchema.findByIdAndUpdate(req.params.id, {$inc: {quantity: num}}, {new: true}, function(err, prods){
+    ProductSchema.findByIdAndUpdate(req.params.id, {$inc: {quantity: number}}, {new: true}, function(err, prods){
         if(err){
             console.log(err);
             return res.redirect("/");
