@@ -35,7 +35,19 @@ module.exports.fetchProduct = function(req, res){
 
 // For updating the product
 module.exports.productUpdate = function(req, res){
-
+    const num = parseInt(req.query.num);
+    console.log("params", req.params.id);
+    ProductSchema.findByIdAndUpdate(req.params.id, {$inc: {quantity: num}}, {new: true}, function(err, prods){
+        if(err){
+            console.log(err);
+            return res.redirect("/");
+        }else{
+            return res.json({data: {
+                product: prods,
+                message: "Succesfully updated"
+            }})
+        }
+    });
 }
 
 // For deleting a product
