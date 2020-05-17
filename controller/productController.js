@@ -8,7 +8,15 @@ const ProductSchema = require('../models/ProductSchema');
 
 // for add the product
 module.exports.productAdd = function(req, res){
-
+    
+    //creation of database
+    ProductSchema.create(req.body, function(err, prod){
+        if(err){
+            console.log(err);
+            return res.redirect('/');
+        }
+        return res.json({prod});
+    });
 }
 
 // for fetching the product
@@ -23,5 +31,5 @@ module.exports.productUpdate = function(req, res){
 
 // For deleting a product
 module.exports.productDelete = function(req, res){
-    
+
 }
