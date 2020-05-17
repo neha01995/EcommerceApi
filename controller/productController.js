@@ -52,5 +52,13 @@ module.exports.productUpdate = function(req, res){
 
 // For deleting a product
 module.exports.productDelete = function(req, res){
-
+    console.log(req.body);
+    ProductSchema.findByIdAndRemove(req.params.id, function(err){
+        if(err){
+            console.error(err);
+            return res.redirect('/');
+        }else{
+            return res.json({data: {message: "deleted the product"}})
+        }
+    });
 }
