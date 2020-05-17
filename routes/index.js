@@ -1,10 +1,11 @@
 const express = require("express");
 
 const router = express.Router();
-const hone = require('../controller/productController');
+const productController = require('../controller/productController');
 
-router.get('/', hone.home);
+// router.get('/', hone.home);
 
+router.use('/products', require('./product'));
 // router.get('/', (req, res) => {
 //     res.json({"message": "welcome guys" });
 // });
