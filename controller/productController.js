@@ -21,6 +21,15 @@ module.exports.productAdd = function(req, res){
 
 // for fetching the product
 module.exports.fetchProduct = function(req, res){
+    ProductSchema.find({}, function(err, prod){
+        if(err){
+            console.log(err);
+            return res.redirect('/');
+        }
+        return res.json({data: {
+            products: prod
+        }});
+    })
 
 }
 
