@@ -13,7 +13,7 @@ module.exports.productAdd = function(req, res){
     ProductSchema.create(req.body, function(err, prod){
         if(err){
             console.log(err);
-            return res.redirect('/');
+            return;
         }
         return res.json({prod});
     });
@@ -24,7 +24,7 @@ module.exports.fetchProduct = function(req, res){
     ProductSchema.find({}, function(err, prod){
         if(err){
             console.log(err);
-            return res.redirect('/');
+            return res.redirect('/';
         }
         return res.json({data: {
             products: prod
