@@ -24,7 +24,7 @@ module.exports.fetchProduct = function(req, res){
     ProductSchema.find({}, function(err, prod){
         if(err){
             console.log(err);
-            return res.redirect('/';
+            return;
         }
         return res.json({data: {
             products: prod
@@ -42,7 +42,7 @@ module.exports.productUpdate = function(req, res){
     ProductSchema.findByIdAndUpdate(req.params.id, {$inc: {quantity: number}}, {new: true}, function(err, prods){
         if(err){
             console.log(err);
-            return res.redirect("/");
+            return;
         }else{
             return res.json({data: {
                 product: prods,
@@ -58,7 +58,7 @@ module.exports.productDelete = function(req, res){
     ProductSchema.findByIdAndRemove(req.params.id, function(err){
         if(err){
             console.error(err);
-            return res.redirect('/');
+            return;
         }else{
             return res.json({data: {message: "deleted the product"}})
         }
